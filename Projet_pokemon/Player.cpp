@@ -15,7 +15,7 @@ Player::~Player()
 
 void Player::initPlayer()
 {
-	if(!this->texture.loadFromFile("Assets/Groudon.png", sf::IntRect(100,0,100,100)))
+	if(!this->texture.loadFromFile("Assets/Entity/mainCharacter/Groudon.png", sf::IntRect(100,0,100,100)))
 	{
 		std::cout << "Error";
 	}
