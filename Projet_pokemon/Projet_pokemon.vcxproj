@@ -143,21 +143,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AnimatedNPCS.cpp" />
-    <ClCompile Include="AnimatedPlayer.cpp" />
+    <ClCompile Include="AnimatedEntity.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="NPCS.cpp" />
+    <ClCompile Include="Entitycpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Game.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnimatedNPCS.h" />
-    <ClInclude Include="AnimatedPlayer.h" />
+    <ClInclude Include="AnimatedEntity.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="General.h" />
-    <ClInclude Include="NPCS.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

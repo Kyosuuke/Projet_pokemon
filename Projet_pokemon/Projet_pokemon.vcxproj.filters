@@ -24,13 +24,10 @@
     <ClCompile Include="Game.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="AnimatedPlayer.cpp">
+    <ClCompile Include="AnimatedEntity.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="AnimatedNPCS.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="NPCS.cpp">
+    <ClCompile Include="Entitycpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Background.cpp">
@@ -47,13 +44,10 @@
     <ClInclude Include="General.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="AnimatedNPCS.h">
+    <ClInclude Include="AnimatedEntity.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="NPCS.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimatedPlayer.h">
+    <ClInclude Include="Entity.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Background.h">
