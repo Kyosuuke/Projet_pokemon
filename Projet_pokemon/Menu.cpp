@@ -10,40 +10,40 @@ void Menu::initSprite() {
 	//start sprite loader
 	this->startSprite.setTexture(this->startTexture);
 
-	this->startSprite.scale(0.1f, 0.1f);
+	this->startSprite.scale(0.25f, 0.25f);
 	this->startSprite.setPosition(200, 100);
 
 	//setting sprite loader
 	this->settingSprite.setTexture(this->settingTexture);
 
-	this->settingSprite.scale(0.1f, 0.1f);
+	this->settingSprite.scale(0.25f, 0.25f);
 	this->settingSprite.setPosition(250, 150);
 
 	//quit sprite loader
 	this->quitSprite.setTexture(this->quitTexture);
 
-	this->quitSprite.scale(0.1f, 0.1f);
-	this->quitSprite.setPosition(200, 300);
+	this->quitSprite.scale(0.25f, 0.25f);
+	this->quitSprite.setOrigin(200, 200);
 	this->textQuit.setString("Quit");
-	this->textQuit.setPosition(300, 350);
+	this->textQuit.move(300, 350);
 }
 
 void Menu::initMenuTexture() {
 	//Start load
 
-	if (!this->startTexture.loadFromFile("Assets/Menu/Menu.png", sf::IntRect(100, 0, 3100, 1300)))
+	if (!this->startTexture.loadFromFile("Assets/Menu/Menu.png", sf::IntRect(100, 0, 800, 500)))
 	{
 		std::cout << "Error";
 	}
 
 	//Setting load
-	if (!this->settingTexture.loadFromFile("Assets/Menu/Menu.png", sf::IntRect(400, 1313, 3100, 1300)))
+	if (!this->settingTexture.loadFromFile("Assets/Menu/Menu.png", sf::IntRect(100, 500, 800, 500)))
 	{
 		std::cout << "Error";
 	}
 
 	//quit load
-	if (!this->quitTexture.loadFromFile("Assets/Menu/Menu.png", sf::IntRect(3600, 1313, 3100, 1300)))
+	if (!this->quitTexture.loadFromFile("Assets/Menu/Menu.png", sf::IntRect(800, 500, 800, 500)))
 	{
 		std::cout << "Error";
 	}
