@@ -21,6 +21,7 @@ void Player::Update(float deltaTime)
 	sf::Vector2f movement(0.0f, 0.0f);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if(!this->texture.loadFromFile("Assets/Entity/mainCharacter/Groudon.png", sf::IntRect(100,0,100,100)))
 	{
 		row = 1;
 		movement.x -= speed * deltaTime;

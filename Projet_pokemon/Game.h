@@ -1,30 +1,33 @@
 #pragma once
 #include "General.h"
 #include "Player.h"
-#include <chrono>
+#include "Menu.h"
 
 class Game {
 
 public:
 
-    //COnstructuor
+    //Constructuor
     Game();
 
     //Functions
-    //void gameRender();
+    
 
     void gameLoop();
 
 private:
     // Variables
-        // window
+    // window
     sf::RenderWindow* window;
-    // shape
-    sf::CircleShape shape;
+
     // Event
     sf::Event event;
+
+    // Player
+    Player* player;
 
     // functions
     void initVariables();
     void gameInit();
+    void initPlayer();
 };
