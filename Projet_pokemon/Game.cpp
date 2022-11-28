@@ -3,30 +3,31 @@
 Game::Game() {
     initVariables();
     gameInit();
-    this->initPlayer();
+    this->menu;
+    
     gameLoop();
 }
 
 void Game::initVariables() {
+    
     this->window = nullptr;
+
+    //class
+    this->menu = new Menu;
+    this->player = new Player;
+   
 }
 
 void Game::gameInit() {
 
-
-    this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "Pokemon");
-    this->shape.setRadius(100.f);
-    this->shape.setFillColor(sf::Color::Green);
+    this->window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Pokemon NON Edition");
 }
-
-// void Game::gameRender(){
-
-// }
 
 void Game::gameLoop() {
 
     while (this->window->isOpen())
     {
+        
 
         while (this->window->pollEvent(this->event))
         {
@@ -34,6 +35,9 @@ void Game::gameLoop() {
                 this->window->close();
         }
         render();
+
+        this->player;
+        //keyboard part
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             this->player->move(-1.f, 0.f);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -45,15 +49,12 @@ void Game::gameLoop() {
     }
 }
 
-void Game::initPlayer()
-{
-    this->player = new Player;
-}
 
 void Game::render()
 {
     this->window->clear();
 
+    this->menu->render(this->window);
     this->player->render(this->window);
 
     this->window->display();

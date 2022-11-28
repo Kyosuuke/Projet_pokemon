@@ -13,7 +13,7 @@ private:
 	float movementSpeed;
 
 	// Private Functions
-	void initPlayer();
+	
 	void initSprite();
 
 public:
@@ -23,6 +23,8 @@ public:
 	// Destructor
 	~Player();
 
+
+	void initPlayer();
 	// Functions
 	void move(const float dirX, const float dirY);
 	void update();
