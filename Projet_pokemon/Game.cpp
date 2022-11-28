@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Player.h"
 #include "Animation.h"
+#include "Menu.h"
 
 Game::Game() {
 
@@ -32,6 +33,7 @@ void Game::gameInit() {
 
 void Game::gameLoop() {
 
+    sf::Texture playerTexture;
     Player player(&playerTexture, sf::Vector2u(4, 4), 0.3f, 100.0f);
     
     float deltaTime = 0.0f;
@@ -45,28 +47,14 @@ void Game::gameLoop() {
             if (this->event.type == sf::Event::Closed)
                 this->window->close();
         }
-        render();
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            this->player->move(-1.f, 0.f);
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            this->player->move(1.f, 0.f);
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            this->player->move(0.f, -1.f);
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-            this->player->move(0.f, 1.f);
+
+        player.Update(deltaTime);
+        
+        window->clear();
+
+        player.Draw(window);
+
+        window->display();
+
     }
-}
-
-void Game::initPlayer()
-{
-    this->player = new Player;
-}
-
-void Game::render()
-{
-    this->window->clear();
-
-    this->player->render(this->window);
-
-    this->window->display();
 }

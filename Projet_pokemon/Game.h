@@ -29,5 +29,4 @@ private:
     // functions
     void initVariables();
     void gameInit();
-    void initPlayer();
 };

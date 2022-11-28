@@ -15,10 +15,6 @@ private:
 	bool faceRight;
 	bool faceUp;
 
-	// Private Functions
-	
-	void initSprite();
-
 public:
 	// Constructor
 	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
@@ -26,8 +22,6 @@ public:
 	// Destructor
 	~Player();
 
-
-	void initPlayer();
 	// Functions
 	void Update(float deltaTime);
 	void Draw(sf::RenderTarget* target);
