@@ -6,8 +6,6 @@ int main()
 {
 
     Game g;
-    g;
     
-
     return 0;
 }
