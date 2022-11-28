@@ -2,6 +2,7 @@
 #include "General.h"
 #include "Player.h"
 #include "Menu.h"
+#include "Animation.h"
 
 class Game {
 
@@ -25,6 +26,9 @@ private:
 
     // Player
     Player* player;
+
+    //Menu
+    Menu* menu;
 
     // functions
     void initVariables();

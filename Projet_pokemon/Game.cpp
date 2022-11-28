@@ -1,14 +1,11 @@
 #include "Game.h"
-#include "Player.h"
-#include "Animation.h"
-#include "Menu.h"
+
 
 Game::Game() {
 
     initVariables();
     gameInit();
     this->menu;
-    
     gameLoop();
 }
 
@@ -18,13 +15,12 @@ void Game::initVariables() {
 
     //class
     this->menu = new Menu;
-    this->player = new Player;
-   
+    
 }
 
 void Game::gameInit() {
 
-    this->window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Pokemon NON Edition");
+    this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "Pokemon NON Edition");
 }
 
 // void Game::gameRender(){
@@ -34,6 +30,7 @@ void Game::gameInit() {
 void Game::gameLoop() {
 
     sf::Texture playerTexture;
+    playerTexture.loadFromFile(PLAYER_TEXTURE_PATH);
     Player player(&playerTexture, sf::Vector2u(4, 4), 0.3f, 100.0f);
     
     float deltaTime = 0.0f;
@@ -51,8 +48,10 @@ void Game::gameLoop() {
         player.Update(deltaTime);
         
         window->clear();
-
+        this->menu->render(this->window);
+        
         player.Draw(window);
+
 
         window->display();
 
