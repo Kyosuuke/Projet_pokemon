@@ -1,44 +1,58 @@
 #include "Player.h"
 
-Player::Player()
+Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed):
+	animation(texture, imageCount, switchTime)
 {
-	this->movementSpeed = 1.f;
+	this->speed = speed;
+	row = 0;
+	faceRight = true;
 
-	this->initPlayer();
-	this->initSprite();
+	body.setSize(sf::Vector2f(206.f, 206.f));
+	body.setPosition(206.0f, 206.0f);
+	body.setTexture(texture);
 }
 
 Player::~Player()
 {
-
 }
 
-void Player::initPlayer()
+void Player::Update(float deltaTime)
 {
-	if(!this->texture.loadFromFile("Assets/Groudon.png", sf::IntRect(100,0,100,100)))
+	sf::Vector2f movement(0.0f, 0.0f);
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		std::cout << "Error";
+		row = 1;
+		movement.x -= speed * deltaTime;
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		movement.x += speed * deltaTime;
+		row = 2;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		movement.y -= speed * deltaTime;
+		row = 3;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		movement.y += speed * deltaTime;
+		row = 0;
+	}
+
+	if (movement.x == 0.0f)
+	{
+
+	}
+
+	animation.Update(row, deltaTime, faceRight);
+	body.setTextureRect(animation.uvRect);
+	body.move(movement);
+
 }
 
-void Player::initSprite()
+void Player::Draw(sf::RenderTarget* target)
 {
-	this->sprite.setTexture(this->texture);
-
-	this->sprite.scale(1.f, 1.f);
-}
-
-void Player::move(const float dirX, const float dirY)
-{
-	this->sprite.move(this->movementSpeed * dirX, this->movementSpeed * dirY);
-}
-
-void Player::update()
-{
-
-}
-
-void Player::render(sf::RenderWindow* target)
-{
-	target->draw(this->sprite);
+	target->draw(this->body);
 }

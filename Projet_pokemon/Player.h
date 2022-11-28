@@ -2,29 +2,28 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
-
+#include "Model.h"
+#include "Animation.h"
 
 class Player
 {
 private:
-	sf::Texture texture;
-	sf::Sprite sprite;
-
-	float movementSpeed;
-
-	// Private Functions
-	void initPlayer();
-	void initSprite();
+	sf::RectangleShape body;
+	Animation animation;
+	unsigned int row;
+	float speed;
+	bool faceRight;
+	bool faceUp;
 
 public:
 	// Constructor
-	Player();
+	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
 
 	// Destructor
 	~Player();
 
 	// Functions
-	void move(const float dirX, const float dirY);
-	void update();
-	void render(sf::RenderWindow* target);
+	void Update(float deltaTime);
+	void Draw(sf::RenderTarget* target);
+	
 };

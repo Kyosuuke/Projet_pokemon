@@ -1,7 +1,7 @@
 #pragma once
 #include "General.h"
 #include "Player.h"
-
+#include <chrono>
 
 class Game {
 
@@ -24,12 +24,7 @@ private:
     // Event
     sf::Event event;
 
-    // Player
-    Player* player;
-
     // functions
-    void render();
     void initVariables();
     void gameInit();
-    void initPlayer();
 };
