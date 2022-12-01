@@ -20,7 +20,7 @@ void Menu::initVarMenu() {
 }
 
 void Menu::initWindowMenu() {
-    this->targetMenu = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pokemon NON Edition");
+    this->targetMenu = new sf::RenderWindow(sf::VideoMode(MENU_WIDTH, MENU_HEIGHT), "Pokemon NON Edition");
 }
 
 void Menu::initMenuTexture() {
@@ -58,17 +58,17 @@ void Menu::initMenu() {
 
 	this->titleSprite.scale(1.f, 1.f);
 	this->titleSprite.setOrigin(titleSprite.getTexture()->getSize().x/2, titleSprite.getTexture()->getSize().y / 2);
-	this->titleSprite.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 3);
+	this->titleSprite.setPosition(MENU_WIDTH / 2, MENU_HEIGHT / 3);
 	
 
 	textStart.setString("Start");
-	textStart.setPosition(WINDOW_WIDTH / 2.15, WINDOW_HEIGHT / 1.55);
+	textStart.setPosition(MENU_WIDTH / 2.15, MENU_HEIGHT / 1.55);
 
 	textSetting.setString("Setting");
-	textSetting.setPosition(WINDOW_WIDTH / 2.15, WINDOW_HEIGHT / 1.35);
+	textSetting.setPosition(MENU_WIDTH / 2.15, MENU_HEIGHT / 1.35);
 
 	textQuit.setString("Quit");
-	textQuit.setPosition(WINDOW_WIDTH / 2.15, WINDOW_HEIGHT / 1.2);
+	textQuit.setPosition(MENU_WIDTH / 2.15, MENU_HEIGHT / 1.2);
 }
 
 void Menu::render() {

@@ -9,6 +9,7 @@ Game::Game() {
 void Game::initVariables() {
     
     this->window = nullptr;
+    this->fields = new Fields();
     //class
     
 }
@@ -16,6 +17,7 @@ void Game::initVariables() {
 void Game::gameInit() {
 
     this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pokemon NON Edition");
+    this->fields->grass();
 }
 
 void Game::gameLoop() {
@@ -41,6 +43,12 @@ void Game::gameLoop() {
         {
             if (this->event.type == sf::Event::Closed)
                 this->window->close();
+
+            if (this->event.type == sf::Event::KeyPressed) {
+                if (this->event.key.code == sf::Keyboard::Escape) {
+                    this->window->close();
+                }
+            }
         }
 
         // Player movement
@@ -54,6 +62,10 @@ void Game::gameLoop() {
         window->setView(view);
 
         window->clear();
+
+        this->fields->grassMap(*this->window);
+        this->fields->dirtMap(*this->window);
+
         
         // Rendering the player
         player.Draw(window);
