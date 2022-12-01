@@ -7,43 +7,46 @@ public:
 
 	
 	Menu();
-	
-	void render(sf::RenderWindow* targetMenu);
-
+	//~Menu();
 	//function menu part
-	void initMenuTexture();
 
-private:
-//variables
-	//start texture
-	sf::Texture startTexture;
-	//setting texture
-	sf::Texture settingTexture;
-	//quit texture
-	sf::Texture quitTexture;
+	
+	void loopMenu();
 
-
-	//start sprite
-	sf::Sprite startSprite;
-	//setting sprite
-	sf::Sprite settingSprite;
-	//quit srpite
-	sf::Sprite quitSprite;
+	int pos;
+	bool isRunning = false;
 
 	// text and font
-	//text start
+//text start
 	sf::Text textStart;
 	//text setting
 	sf::Text textSetting;
 	//text quit
 	sf::Text textQuit;
 
+	sf::Event eventMenu;
 
+	sf::RenderWindow* targetMenu;
+
+protected:
+	
+	
 	sf::Font font;
 
-	//functions 
-	//Sprite part
-	void initSprite();
+	
+	void initVarMenu();
+	void initWindowMenu();
+	void initMenuTexture();
 	void initFont();
+	void render();
+	void initMenu();
+
+
+
+	//quit srpite
+	sf::Sprite titleSprite;
+
+	//quit texture
+	sf::Texture titleTexture;
 	
 };

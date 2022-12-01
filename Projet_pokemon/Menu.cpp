@@ -1,93 +1,199 @@
 #include "Menu.h"
 
 Menu::Menu() {
-	this->initMenuTexture();
-	this->initFont();
-	this->initSprite();
+    this->initVarMenu();
+    this->initWindowMenu();
+    this->initMenuTexture();
+    this->initFont();
+    this->initMenu();
+    this->loopMenu();
 }
 
-void Menu::initSprite() {
-	//start sprite loader
-	this->startSprite.setTexture(this->startTexture);
+//Menu::~Menu() {
+//    delete targetMenu;
+//}
 
-	this->startSprite.scale(0.25f, 0.25f);
-	this->startSprite.setPosition(200, 100);
+void Menu::initVarMenu() {
+    this->targetMenu = nullptr;
 
-	//setting sprite loader
-	this->settingSprite.setTexture(this->settingTexture);
+    pos = 0;
+}
 
-	this->settingSprite.scale(0.25f, 0.25f);
-	this->settingSprite.setPosition(250, 150);
-
-	//quit sprite loader
-	this->quitSprite.setTexture(this->quitTexture);
-
-	this->quitSprite.scale(0.25f, 0.25f);
-	this->quitSprite.setOrigin(200, 200);
-	this->textQuit.setString("Quit");
-	this->textQuit.move(300, 350);
+void Menu::initWindowMenu() {
+    this->targetMenu = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pokemon NON Edition");
 }
 
 void Menu::initMenuTexture() {
-	//Start load
-
-	if (!this->startTexture.loadFromFile("Assets/Menu/Menu.png", sf::IntRect(100, 0, 800, 500)))
-	{
-		std::cout << "Error";
-	}
-
-	//Setting load
-	if (!this->settingTexture.loadFromFile("Assets/Menu/Menu.png", sf::IntRect(100, 500, 800, 500)))
-	{
-		std::cout << "Error";
-	}
-
-	//quit load
-	if (!this->quitTexture.loadFromFile("Assets/Menu/Menu.png", sf::IntRect(800, 500, 800, 500)))
-	{
-		std::cout << "Error";
-	}
-}
-
-void Menu::render(sf::RenderWindow* targetMenu) {
-
-	//sprite part
-
-	// start sprite render
-	targetMenu->draw(this->startSprite);
-
-	//setting sprite load
-	targetMenu->draw(this->settingSprite);
-
-	//quit sprite load
-	targetMenu->draw(this->quitSprite);
-
-	//draw part
-
-	//text start render
-	targetMenu->draw(this->textStart);
-	//text setting render
-	targetMenu->draw(this->textSetting);
-	//text quit render
-	targetMenu->draw(this->textQuit);
+    //quit load
+    if (!this->titleTexture.loadFromFile("Assets/Menu/Title.png"))
+    {
+        std::cout << "Error";
+    }
 }
 
 void Menu::initFont() {
 
-	if (!font.loadFromFile("WarPriestRegular-PanE.ttf"))
-	{
-		// error...
-	}
+    if (!font.loadFromFile("WarPriestRegular-PanE.ttf"))
+    {
+        // error...
+    }
 
-	//font for text
+    //font for text
 
-	textStart.setFont(font);
-	textSetting.setFont(font);
-	textQuit.setFont(font);
+    textStart.setFont(font);
+    textSetting.setFont(font);
+    textQuit.setFont(font);
 
-	//text size
+    //text size
 
-	textStart.setCharacterSize(24);
-	textSetting.setCharacterSize(24);
-	textQuit.setCharacterSize(24);
+    textStart.setCharacterSize(24);
+    textSetting.setCharacterSize(24);
+    textQuit.setCharacterSize(24);
 }
+
+void Menu::initMenu() {
+
+	//setting sprite loader
+	this->titleSprite.setTexture(this->titleTexture);
+
+	this->titleSprite.scale(1.f, 1.f);
+	this->titleSprite.setOrigin(titleSprite.getTexture()->getSize().x/2, titleSprite.getTexture()->getSize().y / 2);
+	this->titleSprite.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 3);
+	
+
+	textStart.setString("Start");
+	textStart.setPosition(WINDOW_WIDTH / 2.15, WINDOW_HEIGHT / 1.55);
+
+	textSetting.setString("Setting");
+	textSetting.setPosition(WINDOW_WIDTH / 2.15, WINDOW_HEIGHT / 1.35);
+
+	textQuit.setString("Quit");
+	textQuit.setPosition(WINDOW_WIDTH / 2.15, WINDOW_HEIGHT / 1.2);
+}
+
+void Menu::render() {
+
+    //// start sprite render
+    this->targetMenu->draw(this->titleSprite);
+
+    //draw part
+
+    //text start render
+    this->targetMenu->draw(this->textStart);
+    //text setting render
+    this->targetMenu->draw(this->textSetting);
+    //text quit render
+    this->targetMenu->draw(this->textQuit);
+}
+
+void Menu::loopMenu() {
+    while (this->targetMenu->isOpen())
+    {
+        targetMenu->clear();
+        render();
+        while (this->targetMenu->pollEvent(this->eventMenu))
+        {
+            if (eventMenu.type == sf::Event::Closed)
+                targetMenu->close();
+            //key event menu
+            if (eventMenu.type == sf::Event::KeyPressed) {
+
+                //key state 1 or < 1
+                if (eventMenu.key.code == sf::Keyboard::Down && pos == 0) {
+
+                    pos = 1;
+                    //Start is selected
+                    textStart.setFillColor(sf::Color::Red);
+                    //this->menu->textStart.setOutlineThickness(4);
+                    //other is down
+                    textSetting.setFillColor(sf::Color::White);
+                    textQuit.setFillColor(sf::Color::White);
+                }
+
+                else if (eventMenu.key.code == sf::Keyboard::Down && pos == 1) {
+
+                    pos = 2;
+                    //Setting is selected
+                    textSetting.setFillColor(sf::Color::Red);
+                    //this->menu->textStart.setOutlineThickness(4);
+                    //other is down
+                    textStart.setFillColor(sf::Color::White);
+                    textQuit.setFillColor(sf::Color::White);
+                }
+
+                else if (eventMenu.key.code == sf::Keyboard::Up && pos <= 1) {
+
+                    pos = 3;
+                    //Quit is selected
+                    textQuit.setFillColor(sf::Color::Red);
+                    //this->menu->textStart.setOutlineThickness(4);
+                    //other is down
+                    textStart.setFillColor(sf::Color::White);
+                    textSetting.setFillColor(sf::Color::White);
+                }
+
+                //key state 2
+
+                else if (eventMenu.key.code == sf::Keyboard::Up && pos == 2) {
+
+                    pos = 1;
+                    //Start is selected
+                    textStart.setFillColor(sf::Color::Red);
+                    //other is down
+                    textSetting.setFillColor(sf::Color::White);
+                    textQuit.setFillColor(sf::Color::White);
+                }
+
+                else if (eventMenu.key.code == sf::Keyboard::Down && pos == 2) {
+
+
+                    pos = 3;
+                    //Quit is selected
+                    textQuit.setFillColor(sf::Color::Red);
+                    //other is down
+                    textStart.setFillColor(sf::Color::White);
+                    textSetting.setFillColor(sf::Color::White);
+                }
+
+                //key state 3
+
+                else if (eventMenu.key.code == sf::Keyboard::Up && pos == 3) {
+
+
+                    pos = 2;
+                    //Setting is selected
+                    textSetting.setFillColor(sf::Color::Red);
+                    //other is down
+                    textStart.setFillColor(sf::Color::White);
+                    textQuit.setFillColor(sf::Color::White);
+                }
+
+                else if (eventMenu.key.code == sf::Keyboard::Down && pos == 3) {
+
+                    pos = 1;
+                    //Start is selected
+                    textStart.setFillColor(sf::Color::Red);
+                    //other is down
+                    textSetting.setFillColor(sf::Color::White);
+                    textQuit.setFillColor(sf::Color::White);
+                }
+
+                if (eventMenu.key.code == sf::Keyboard::Enter && pos == 1) {
+                    this->targetMenu->close();
+                    isRunning = true;
+                }
+
+                if (this->eventMenu.key.code == sf::Keyboard::Enter && pos == 3) {
+                    this->targetMenu->close();
+                }
+            }
+        }
+        targetMenu->display();
+    }
+}
+
+
+
+
+
+

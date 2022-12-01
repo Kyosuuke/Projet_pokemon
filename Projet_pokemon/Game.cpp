@@ -2,25 +2,21 @@
 
 
 Game::Game() {
-
-    initVariables();
-    gameInit();
-    
-    gameLoop();
+    this->initVariables();
+   this->gameInit();
+    this->gameLoop();
 }
 
 void Game::initVariables() {
     
     this->window = nullptr;
-
     //class
-    this->menu = new Menu;
     
 }
 
 void Game::gameInit() {
 
-    this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "Pokemon NON Edition");
+    this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pokemon ");
 }
 
 
@@ -32,29 +28,29 @@ void Game::gameLoop() {
     
     float deltaTime = 0.0f;
     sf::Clock clock;
+        
+            while (this->window->isOpen())
+            {
+                window->clear();
 
-    while (this->window->isOpen())
-    {
-        window->clear();
-        this->menu->render(this->window);
-        this->menu;
-        while (this->window->pollEvent(this->event))
-        {
-            if (this->event.type == sf::Event::Closed)
-                this->window->close();
-        }
-
-        player.Update(deltaTime);
-        deltaTime = clock.restart().asSeconds();
-        
-        
-        
-        
-        
-        //player.Draw(window);
+                while (this->window->pollEvent(this->event))
+                {
+                    
+                    
+                    
 
 
-        window->display();
+                    if (this->event.type == sf::Event::Closed)
+                        this->window->close();
 
-    }
+                }
+
+                player.Draw(window);
+
+                player.Update(deltaTime);
+                deltaTime = clock.restart().asSeconds();
+
+                window->display();
+                
+            }
 }
