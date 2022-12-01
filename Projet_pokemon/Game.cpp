@@ -2,7 +2,7 @@
 
 Game::Game() {
     this->initVariables();
-   this->gameInit();
+    this->gameInit();
     this->gameLoop();
 }
 
@@ -15,7 +15,7 @@ void Game::initVariables() {
 
 void Game::gameInit() {
 
-    this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "Pokemon NON Edition");
+    this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pokemon NON Edition");
 }
 
 void Game::gameLoop() {
@@ -36,8 +36,7 @@ void Game::gameLoop() {
     while (this->window->isOpen())
     {
         window->clear();
-        this->menu->render(this->window);
-        this->menu;
+        
         while (this->window->pollEvent(this->event))
         {
             if (this->event.type == sf::Event::Closed)
@@ -47,11 +46,14 @@ void Game::gameLoop() {
         player.Update(deltaTime);
         deltaTime = clock.restart().asSeconds();
         
-        window->clear();
-        this->menu->render(this->window);
-        
-        //player.Draw(window);
+        view.setCenter(player.GetPosition());
+        window->setView(view);
 
+        window->clear();
+        
+        player.Draw(window);
+
+        npcs.Draw(window);
 
         window->display();
 
