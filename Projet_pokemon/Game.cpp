@@ -63,6 +63,7 @@ void Game::gameLoop() {
 
         window->clear();
 
+        // Rendering the map
         this->fields->grassMap(*this->window);
         this->fields->dirtMap(*this->window);
 
