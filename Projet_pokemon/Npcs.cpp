@@ -5,7 +5,7 @@ Npcs::Npcs(sf::Texture* texture)
 	const float gridSize = 50.0f;
 	std::vector<sf::RectangleShape> Rect;
 	
-	rect.setSize(sf::Vector2f(gridSize, gridSize));
+	rect.setSize(sf::Vector2f(32.f, 48.f));
 	rect.setPosition(gridSize * 5, gridSize * 2);
 	rect.setTexture(texture);
 	
