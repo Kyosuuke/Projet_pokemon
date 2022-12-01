@@ -13,7 +13,6 @@ private:
 	unsigned int row;
 	float speed;
 	bool faceRight;
-	bool faceUp;
 
 public:
 	// Constructor
