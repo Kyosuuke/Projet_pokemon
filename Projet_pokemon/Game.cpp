@@ -1,24 +1,21 @@
 #include "Game.h"
 
 Game::Game() {
-
-    initVariables();
-    gameInit();
-    gameLoop();
+    this->initVariables();
+   this->gameInit();
+    this->gameLoop();
 }
 
 void Game::initVariables() {
     
     this->window = nullptr;
-
     //class
-    this->menu = new Menu;
     
 }
 
 void Game::gameInit() {
 
-    this->window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Pokemon NON Edition");
+    this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "Pokemon NON Edition");
 }
 
 void Game::gameLoop() {
@@ -36,9 +33,6 @@ void Game::gameLoop() {
     float deltaTime = 0.0f;
     sf::Clock clock;
 
-    // Collision
-    sf::FloatRect nextPos;
-
     while (this->window->isOpen())
     {
         window->clear();
@@ -46,28 +40,20 @@ void Game::gameLoop() {
         this->menu;
         while (this->window->pollEvent(this->event))
         {
-
-            switch (event.type)
-            {
-            case sf::Event::Closed:
-                window->close();
-                break;
-            case sf::Event::Resized:
-                break;
-            
-            }
+            if (this->event.type == sf::Event::Closed)
+                this->window->close();
         }
 
-        deltaTime = clock.restart().asSeconds();
         player.Update(deltaTime);
-
-        // Window with the player at the center 
-        view.setCenter(player.GetPosition());
-        window->setView(view);
+        deltaTime = clock.restart().asSeconds();
+        
         window->clear();
-        //this->menu->render(this->window);
-        player.Draw(window);
-        npcs.Draw(window);
+        this->menu->render(this->window);
+        
+        //player.Draw(window);
+
+
         window->display();
+
     }
 }

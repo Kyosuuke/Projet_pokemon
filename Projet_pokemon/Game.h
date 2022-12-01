@@ -1,7 +1,6 @@
 #pragma once
 #include "General.h"
 #include "Player.h"
-#include "Menu.h"
 #include "Animation.h"
 #include "Npcs.h"
 
@@ -17,14 +16,14 @@ public:
 
     //Functions
     
-
+    void initVariables();
+    void gameInit();
     void gameLoop();
 
 private:
-    // Variables
+ // Variables
     // window
     sf::RenderWindow* window;
-
     // Event
     sf::Event event;
 
@@ -34,11 +33,9 @@ private:
 
     // Player
     Player* player;
-
     //Menu
-    Menu* menu;
 
     // functions
-    void initVariables();
-    void gameInit();
+    
+    
 };
