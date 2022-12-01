@@ -9,6 +9,7 @@ Game::Game() {
 void Game::initVariables() {
     
     this->window = nullptr;
+    this->fields = new Fields();
     //class
     
 }
@@ -16,6 +17,7 @@ void Game::initVariables() {
 void Game::gameInit() {
 
     this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pokemon NON Edition");
+    this->fields->grass();
 }
 
 void Game::gameLoop() {
@@ -50,7 +52,10 @@ void Game::gameLoop() {
         window->setView(view);
 
         window->clear();
-        
+
+        this->fields->grassMap(*this->window);
+        this->fields->dirtMap(*this->window);
+
         player.Draw(window);
 
         npcs.Draw(window);

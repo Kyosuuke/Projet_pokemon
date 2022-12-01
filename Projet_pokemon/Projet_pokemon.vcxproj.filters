@@ -36,6 +36,9 @@
     <ClCompile Include="Npcs.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Fields.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -58,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="Models.h">
       <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Fields.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

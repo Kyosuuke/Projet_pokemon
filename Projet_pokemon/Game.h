@@ -3,9 +3,10 @@
 #include "Player.h"
 #include "Animation.h"
 #include "Npcs.h"
+#include "Fields.h"
 
-static const float VIEW_HEIGHT = 1080;
-static const float VIEW_WITDH = 1920;
+static const float VIEW_HEIGHT = 600;
+static const float VIEW_WITDH = 700;
 
 class Game {
 
@@ -30,6 +31,8 @@ private:
     // Npcs
     Npcs* npcs;
     std::vector<sf::RectangleShape> Rect;
+
+    Fields* fields;
 
     // Player
     Player* player;

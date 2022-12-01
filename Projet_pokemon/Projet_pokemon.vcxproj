@@ -71,12 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Cli59\libs\SFML-2.5.1\include;C:\lib\SFML-2.5.1\include</IncludePath>
-    <LibraryPath>C:\Users\Cli59\libs\SFML-2.5.1\lib;C:\lib\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Cli59\libs\SFML-2.5.1\include;C:\Users\emile\OneDrive\Documents\libraries\SFML-2.5.1\include</IncludePath>
+    <LibraryPath>C:\Users\emile\OneDrive\Documents\libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\Cli59\libs\SFML-2.5.1\include</IncludePath>
-    <LibraryPath>C:\Users\Cli59\libs\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Cli59\libs\SFML-2.5.1\include;C:\Users\emile\OneDrive\Documents\libraries\SFML-2.5.1\include</IncludePath>
+    <LibraryPath>C:\Users\emile\OneDrive\Documents\libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -113,13 +113,13 @@
       <PreprocessorDefinitions>
       </PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Cli59\libs\SFML-2.5.1\include;C:\lib\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Cli59\libs\SFML-2.5.1\include;C:\Users\emile\OneDrive\Documents\libraries\SFML-2.5.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\Cli59\libs\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Cli59\libs\SFML-2.5.1\lib;C:\Users\emile\OneDrive\Documents\libraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -131,18 +131,19 @@
       <PreprocessorDefinitions>
       </PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Cli59\libs\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Cli59\libs\SFML-2.5.1\include;C:\Users\emile\OneDrive\Documents\libraries\SFML-2.5.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Cli59\libs\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Cli59\libs\SFML-2.5.1\lib;C:\Users\emile\OneDrive\Documents\libraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Fields.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Npcs.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Fields.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="General.h" />
     <ClInclude Include="Animation.h" />
