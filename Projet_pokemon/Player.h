@@ -2,8 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
-#include "Model.h"
+#include "Models.h"
 #include "Animation.h"
+#include "Npcs.h"
 
 class Player
 {
@@ -21,8 +22,14 @@ public:
 	// Destructor
 	~Player();
 
+	char dir;
+
 	// Functions
 	void Update(float deltaTime);
 	void Draw(sf::RenderTarget* target);
+	sf::Vector2f GetPosition() { return body.getPosition(); }
+
+	sf::FloatRect nextPos;
+	const float gridSize = 50.0f;
 	
 };
