@@ -43,6 +43,12 @@ void Game::gameLoop() {
         {
             if (this->event.type == sf::Event::Closed)
                 this->window->close();
+
+            if (this->event.type == sf::Event::KeyPressed) {
+                if (this->event.key.code == sf::Keyboard::Escape) {
+                    this->window->close();
+                }
+            }
         }
 
         player.Update(deltaTime);
