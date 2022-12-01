@@ -46,8 +46,6 @@ void Game::gameLoop() {
                 }
 
                 player.Draw(window);
-        //player.Draw(window);
-        //player.Draw(window);
                 player.Update(deltaTime);
                 deltaTime = clock.restart().asSeconds();
                 window->display();
