@@ -1,5 +1,6 @@
 #pragma once
 #include "General.h"
+#include "Battle.h"
 #include "Player.h"
 #include "Animation.h"
 #include "Npcs.h"
@@ -22,6 +23,7 @@ public:
     void gameLoop();
 
 private:
+    bool end = false;
  // Variables
     // window
     sf::RenderWindow* window;
@@ -34,6 +36,7 @@ private:
 
     Fields* fields;
 
+    Battle* battle;
     // Player
     Player* player;
     //Menu

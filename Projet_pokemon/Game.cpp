@@ -1,5 +1,7 @@
 #include "Game.h"
 
+
+
 Game::Game() {
     this->initVariables();
     this->gameInit();
@@ -10,6 +12,7 @@ void Game::initVariables() {
     
     this->window = nullptr;
     this->fields = new Fields();
+    this->battle = new Battle();
     //class
     
 }
@@ -18,6 +21,7 @@ void Game::gameInit() {
 
     this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pokemon NON Edition");
     this->fields->grass();
+    this->battle->textureBattle();
 }
 
 void Game::gameLoop() {
@@ -49,15 +53,29 @@ void Game::gameLoop() {
                     this->window->close();
                 }
             }
+
+            if (this->event.type == sf::Event::KeyPressed) {
+                if (this->event.key.code == sf::Keyboard::A) {
+                    end = true;
+                    while (end == true)
+                    {
+                        this->window->clear();
+                        this->battle->changeWindow(*this->window);
+                        this->window->display();
+                        //view.reset(player.GetPosition());
+                        //view.setCenter(this->battle->bgBattle.getPosition());
+                    }
+                }
+            }
         }
 
         player.Update(deltaTime);
         deltaTime = clock.restart().asSeconds();
         
         view.setCenter(player.GetPosition());
-        window->setView(view);
+        this->window->setView(view);
 
-        window->clear();
+        this->window->clear();
 
         this->fields->grassMap(*this->window);
         this->fields->dirtMap(*this->window);
