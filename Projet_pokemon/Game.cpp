@@ -22,14 +22,16 @@ void Game::gameInit() {
 
 void Game::gameLoop() {
 
-    // Texture
+    // View
     sf::View view(sf::Vector2f(0.f, 0.f), sf::Vector2f(VIEW_WITDH, VIEW_HEIGHT));
+
+    // Texture
     sf::Texture npcTexture;
     npcTexture.loadFromFile(NPC_TEXTURE_PATH, sf::IntRect(32,0,32,48));
     Npcs npcs(&npcTexture);
     sf::Texture playerTexture;
     playerTexture.loadFromFile(PLAYER_TEXTURE_PATH);
-    Player player(&playerTexture, sf::Vector2u(3, 4), 0.2f, 100.0f);
+    Player player(&playerTexture, sf::Vector2u(3, 4), 0.2f, 16.0f);
 
     // Deltatime
     float deltaTime = 0.0f;

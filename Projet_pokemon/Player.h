@@ -5,6 +5,8 @@
 #include "Models.h"
 #include "Animation.h"
 #include "Npcs.h"
+#include "Fields.h"
+
 
 class Player
 {
@@ -14,6 +16,8 @@ private:
 	unsigned int row;
 	float speed;
 	bool faceRight;
+	float x, y;
+	int gridX, gridY;
 
 public:
 	// Constructor
@@ -22,12 +26,16 @@ public:
 	// Destructor
 	~Player();
 
+	const float gridSize = 16.0f;
+
+	Fields* fields;
+	
 	// Functions
 	void Update(float deltaTime);
 	void Draw(sf::RenderTarget* target);
-	sf::Vector2f GetPosition() { return body.getPosition(); }
 
+	sf::Vector2f GetPosition() { return body.getPosition(); }
+	sf::FloatRect oldPos;
 	sf::FloatRect nextPos;
-	const float gridSize = 50.0f;
 	
 };

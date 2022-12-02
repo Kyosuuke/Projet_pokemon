@@ -9,13 +9,18 @@ const int mapColumn = 120;
 
 class Fields
 {
+
+protected:
+
 public:
+	
 	Fields();
 	void grass();
 	void dirtMap(sf::RenderWindow& myWallMap);
 	void grassMap(sf::RenderWindow& myMap);
 
 private:
+
 	sf::Sprite sprite;
 	sf::Sprite wall;
 	sf::Texture textureSet;
