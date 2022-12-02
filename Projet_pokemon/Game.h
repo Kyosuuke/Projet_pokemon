@@ -32,14 +32,13 @@ private:
 
     // Npcs
     Npcs* npcs;
-    std::vector<sf::RectangleShape> Rect;
-
+    
+    // Map
     Fields* fields;
 
     Battle* battle;
     // Player
     Player* player;
-    //Menu
 
     // functions
     

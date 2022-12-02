@@ -22,8 +22,6 @@ public:
 	// Destructor
 	~Player();
 
-	char dir;
-
 	// Functions
 	void Update(float deltaTime);
 	void Draw(sf::RenderTarget* target);

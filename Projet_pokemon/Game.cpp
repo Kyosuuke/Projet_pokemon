@@ -29,7 +29,7 @@ void Game::gameLoop() {
     // Texture
     sf::View view(sf::Vector2f(0.f, 0.f), sf::Vector2f(VIEW_WITDH, VIEW_HEIGHT));
     sf::Texture npcTexture;
-    npcTexture.loadFromFile(NPC_TEXTURE_PATH, sf::IntRect(36,0,30,64));
+    npcTexture.loadFromFile(NPC_TEXTURE_PATH, sf::IntRect(32,0,32,48));
     Npcs npcs(&npcTexture);
     sf::Texture playerTexture;
     playerTexture.loadFromFile(PLAYER_TEXTURE_PATH);
@@ -69,19 +69,25 @@ void Game::gameLoop() {
             }
         }
 
+        // Player movement
         player.Update(deltaTime);
         deltaTime = clock.restart().asSeconds();
         
+        // View
         view.setCenter(player.GetPosition());
         this->window->setView(view);
 
         this->window->clear();
 
+        // Rendering the map
         this->fields->grassMap(*this->window);
         this->fields->dirtMap(*this->window);
 
+        
+        // Rendering the player
         player.Draw(window);
 
+        // Rendering the npc
         npcs.Draw(window);
 
         window->display();

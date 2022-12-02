@@ -53,7 +53,6 @@ void Player::Update(float deltaTime)
 
 	body.setTextureRect(animation.uvRect);
 	body.move(movement);
-
 }
 
 void Player::Draw(sf::RenderTarget* target)
